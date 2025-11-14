@@ -249,6 +249,27 @@ button {
   display: none;
 }
 
+.category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.category a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+}
+
+.category img {
+  width: 50px;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

@@ -33,8 +33,13 @@ function productDetailsTemplates(product) {
     document.querySelector('h3').textContent = product.NameWithoutBrand;
     
     const productImage = document.getElementById('productImage');
-    productImage.src = product.Image;
+    productImage.src = product.Images.PrimaryLarge;
     productImage.alt = product.NameWithoutBrand;
+    const euroPrice = new Intl.NumberFormat('de-DE',
+        {
+          style: 'currency', currency: 'EUR',
+        }).format(Number(product.FinalPrice) * 0.85);
+    document.querySelector("#p-price").textContent = `${euroPrice}`;
 
     document.getElementById('productPrice').textContent = product.FinalPrice;
     document.getElementById('productColor').textContent = product.Colors[0].ColorName;
