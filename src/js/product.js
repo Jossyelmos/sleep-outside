@@ -1,9 +1,12 @@
+import { getParam, loadHeaderFooter } from "./utils.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 import ProductData from "./ProductData.mjs";
-import { getParam } from "./utils.mjs";
 
-const dataSource = new ProductData("tents");
-const productId = getParam("product");
+loadHeaderFooter();
 
-const product = new ProductDetails(productId, dataSource);
+const category = getParam("category");
+const dataSource = new ProductData();
+const productId = getParam("id");
+
+const product = new ProductDetails(category, productId, dataSource);
 product.init();
