@@ -32,20 +32,22 @@ export default class ShoppingCart {
 
     // Calculate total
     const total = this.cart.reduce((sum, item) => sum + item.FinalPrice, 0);
-    document.querySelector(".total-price").textContent = `Total Price: $${total.toFixed(2)}`;
+    document.querySelector(".total-price").innerHTML = `
+      <p><strong>Total Price:</strong> $${total.toFixed(2)}</p>
+    `;
     document.querySelector(".card-footer").classList.remove("hide");
   }
 
-    removeItem(index) {
-      // Remove item from cart array
-      this.cart.splice(index, 1);
+  removeItem(index) {
+    // Remove item from cart array
+    this.cart.splice(index, 1);
 
-      // Update localStorage
-      setLocalStorage("so-cart", this.cart);
+    // Update localStorage
+    setLocalStorage("so-cart", this.cart);
 
-      // Re-render cart
-      this.renderCart();
-    }
+    // Re-render cart
+    this.renderCart();
+  }
 }
 
 function cartItemTemplate(item) {
