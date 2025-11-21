@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, alertMessage } from "./utils.mjs";
 
 export default class ProductDetails {
 
@@ -21,9 +21,32 @@ export default class ProductDetails {
     }
 
     addProductToCart() {
-        const curCart = getLocalStorage("so-cart") || [];
-        curCart.push(this.product);
-        setLocalStorage("so-cart", curCart);
+      const curCart = getLocalStorage("so-cart") || [];
+      // Have product.Quality default to 1 to stop error
+      this.product.Quantity = 1;
+      // Before we push to curCart, check to see if this product is already there
+      if (curCart.length > 0) {
+          curCart.forEach((element, index) => {
+              if (element.Id === this.product.Id) {
+                  if (!element.Quantity) {
+                      // If this comes back as undefined or false
+                      // This check checks to see if Quantity exists on the element,
+                      // This helps intergrate old versions with this update
+                      this.product.Quantity = 0;
+                  } else {
+                      // Set this product Quantity to the last object in the list
+                      this.product.Quantity = element.Quantity;
+                  };
+                  this.product.Quantity += 1;
+                  curCart.splice(index, 1);
+              };
+          });
+      } else {
+          this.product.Quantity = 1;
+      };
+      curCart.push(this.product);
+      setLocalStorage("so-cart", curCart);
+      alertMessage(`${this.product.NameWithoutBrand} added to cart!`);
     }
 
     renderProductDetails() {
