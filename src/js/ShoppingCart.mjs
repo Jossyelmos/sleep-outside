@@ -35,6 +35,7 @@ export default class ShoppingCart {
     document.querySelector(".total-price").innerHTML = `
       <p><strong>Total Price:</strong> $${total.toFixed(2)}</p>
     `;
+    
     document.querySelector(".card-footer").classList.remove("hide");
   }
 
