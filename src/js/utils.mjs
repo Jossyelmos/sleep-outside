@@ -62,6 +62,8 @@ export async function loadHeaderFooter(){
 
   renderWithTemplate(headerContent, header);
   renderWithTemplate(footerContent, footer);
+
+  updateCartBadge();
 }
 
 
@@ -90,4 +92,15 @@ export function alertMessage(message, scroll = true, duration = 3000) {
 export function removeAllAlerts() {
   const alerts = document.querySelectorAll(".alert");
   alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+}
+
+
+export function updateCartBadge() {
+  const cart = getLocalStorage("so-cart") || [];
+  const badge = document.querySelector(".cartIndicator");
+
+  if (badge) {
+    badge.textContent = cart.length;
+    badge.style.display = cart.length > 0 ? "flex" : "0";
+  }
 }
