@@ -118,7 +118,7 @@ button {
 /* End utility classes */
 
 /* Cart icon styles */
-.cart {
+/* .cart {
   padding-top: 1em;
   position: relative;
   text-align: center;
@@ -130,6 +130,63 @@ button {
 
 .cart:hover svg {
   fill: gray;
+}
+
+.cartIndicator {
+  position: absolute;
+  top: 4px;
+  right: -10px;
+  background-color: red;
+  color: var(--light-grey);
+  padding: 3px;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: sans-serif;
+  opacity: 1;
+} */
+
+/* Container – uses flex for easy centering */
+.cart {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+}
+
+/* Icon size & transition */
+.cart svg {
+  width: 25px;
+  height: 25px;
+  fill: var(--dark);
+  transition: fill 0.2s ease;
+}
+
+/* Hover – subtle fade instead of a hard gray */
+.cart:hover svg {
+  fill: grey;
+}
+
+.cartIndicator {
+  position: absolute;
+  top: 2px;
+  right: -3px;
+  background: #F03A17;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 /* End cart icon styles */
@@ -320,57 +377,45 @@ button {
 }
 
 /* Form Styling */
-.formInput fieldset {
+form fieldset {
   border: 1px solid #ddd;
   border-radius: 6px;
-  padding: 1.5rem;
+  padding: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.formInput legend {
+form legend {
   font-weight: bold;
   color: #2c3e50;
   padding: 0 0.5rem;
 }
 
-.formInput label {
+form label {
   display: block;
   margin-top: 1rem;
   font-size: 0.9rem;
   color: #555;
 }
 
-.formInput input {
+form input {
   width: 100%;
-  padding: 0.6rem;
+  padding: 0.4rem;
   margin-top: 0.3rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   transition: border-color 0.2s ease;
 }
 
-.formInput input:focus {
+form input:focus {
   border-color: #2c3e50;
   outline: none;
 }
 
-/* Aside (Order Summary) */
-.aside {
-  flex: 1;
-  background: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.orderSum p {
-  margin: 0.8rem 0;
-  font-size: 1rem;
-}
-
-.orderSum span {
+form .shipping-info {
+  padding: 0.5rem;
+  font-size: 15px;
   font-weight: bold;
-  color: #2c3e50;
+  color: #3A7CA5;
 }
 
 /* alert styles */

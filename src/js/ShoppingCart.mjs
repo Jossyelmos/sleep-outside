@@ -1,4 +1,4 @@
-import { renderListWithTemplate, getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { renderListWithTemplate, getLocalStorage, setLocalStorage, updateCartBadge } from "./utils.mjs";
 
 export default class ShoppingCart {
   constructor(cart, listElement) {
@@ -45,6 +45,8 @@ export default class ShoppingCart {
 
     // Update localStorage
     setLocalStorage("so-cart", this.cart);
+
+    updateCartBadge();
 
     // Re-render cart
     this.renderCart();

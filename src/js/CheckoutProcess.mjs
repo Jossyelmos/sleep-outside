@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, alertMessage, removeAllAlerts } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, alertMessage, removeAllAlerts, updateCartBadge } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
@@ -53,10 +53,11 @@ export default class CheckoutProcess {
         this.outputSelector + " #num-items"
         );
         itemNumElement.innerText = this.list.length;
+
         // calculate the total of all the items in the cart
         const amounts = this.list.map((item) => item.FinalPrice);
         this.itemTotal = amounts.reduce((sum, item) => sum + item);
-        summaryElement.innerText = `$${this.itemTotal}`;;
+        summaryElement.innerText = `$${this.itemTotal.toFixed(2)}`;;
     }
 
     calcOrderTotal() {
@@ -97,6 +98,7 @@ export default class CheckoutProcess {
         const res = await services.checkout(json);
         console.log(res);
         setLocalStorage("so-cart", []);
+        updateCartBadge();
         location.assign("/checkout/success.html");
       } catch (err) {
         // get rid of any preexisting alerts.

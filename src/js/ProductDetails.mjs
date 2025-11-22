@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage, alertMessage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, alertMessage, updateCartBadge } from "./utils.mjs";
 
 export default class ProductDetails {
 
@@ -46,6 +46,7 @@ export default class ProductDetails {
       };
       curCart.push(this.product);
       setLocalStorage("so-cart", curCart);
+      updateCartBadge();
       alertMessage(`${this.product.NameWithoutBrand} added to cart!`);
     }
 
