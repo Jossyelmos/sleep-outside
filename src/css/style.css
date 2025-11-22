@@ -130,22 +130,6 @@ button {
 
 .cart:hover svg {
   fill: gray;
-}
-
-.cartIndicator {
-  position: absolute;
-  top: 4px;
-  right: -10px;
-  background-color: red;
-  color: var(--light-grey);
-  padding: 3px;
-  height: 22px;
-  width: 22px;
-  border-radius: 50%;
-  font-size: 1rem;
-  font-weight: 700;
-  font-family: sans-serif;
-  opacity: 1;
 } */
 
 /* Container – uses flex for easy centering */
