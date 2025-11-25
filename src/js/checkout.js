@@ -11,11 +11,10 @@ document
   .addEventListener("blur", order.calcOrderTotal.bind(order));
 
 // listening for click on the button
-document.querySelector('#checkoutSubmit').addEventListener('click', (e) => {
+document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
   e.preventDefault();
   const myForm = document.forms[0];
   const chk_status = myForm.checkValidity();
   myForm.reportValidity();
-  if(chk_status)
-    order.checkout();
-  });
+  if (chk_status) order.checkout();
+});
